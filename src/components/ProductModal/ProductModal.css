@@ -1,0 +1,312 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-panel {
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  max-width: 900px;
+  width: 100%;
+  max-height: 92vh;
+  overflow: hidden;
+  position: relative;
+  animation: fadeUp 0.3s ease;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 40px rgba(232,0,13,0.06);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background: rgba(14,14,14,0.9);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.modal-close:hover { color: white; border-color: var(--red); background: rgba(232,0,13,0.12); }
+
+.modal-image-wrap {
+  position: relative;
+  background: #0f0f0f;
+  overflow: hidden;
+}
+
+.modal-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+
+.modal-panel:hover .modal-image-wrap img { transform: scale(1.04); }
+
+.modal-img-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: var(--font-condensed);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: white;
+  background: var(--red);
+  padding: 0.25rem 0.6rem;
+  border-radius: 1px;
+}
+
+.modal-info {
+  padding: 2rem 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+}
+
+.modal-top {
+  margin-bottom: 0.4rem;
+}
+
+.modal-brand {
+  font-family: var(--font-condensed);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.modal-title {
+  font-family: var(--font-condensed);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.modal-price-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.modal-price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--white);
+  letter-spacing: 0.05em;
+}
+
+.modal-stock {
+  font-family: var(--font-condensed);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #4caf50;
+  border: 1px solid rgba(76,175,80,0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 1px;
+}
+
+.modal-divider {
+  width: 36px;
+  height: 2px;
+  background: var(--red);
+  margin-bottom: 0.9rem;
+}
+
+.modal-description {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+/* Size */
+.modal-section {
+  margin-bottom: 1.25rem;
+}
+
+.modal-section-label {
+  font-family: var(--font-condensed);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.selected-size {
+  color: var(--white);
+  font-weight: 700;
+}
+
+.size-grid {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.size-btn {
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  width: 44px;
+  height: 44px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.size-btn:hover { border-color: rgba(232,0,13,0.4); color: var(--white); }
+
+.size-btn--active {
+  background: var(--red);
+  border-color: var(--red);
+  color: white;
+  font-weight: 700;
+}
+
+/* Quantity */
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  width: fit-content;
+  overflow: hidden;
+}
+
+.qty-btn {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text);
+  background: var(--card-bg);
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-btn:hover { background: rgba(232,0,13,0.12); color: var(--red); }
+
+.qty-value {
+  font-family: var(--font-condensed);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  width: 44px;
+  text-align: center;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--black);
+}
+
+/* Features */
+.modal-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding-top: 0.25rem;
+}
+
+.modal-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+
+.modal-feature svg { color: var(--red); flex-shrink: 0; }
+
+/* CTA */
+.modal-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  font-family: var(--font-condensed);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: white;
+  background: var(--red);
+  border: 2px solid var(--red);
+  padding: 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.modal-add-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: white;
+  transform: translateX(-101%);
+  transition: transform 0.3s ease;
+}
+
+.modal-add-btn:hover::before { transform: translateX(0); }
+.modal-add-btn:hover { color: var(--red); }
+.modal-add-btn span, .modal-add-btn svg { position: relative; z-index: 1; }
+
+@media (max-width: 700px) {
+  .modal-panel { grid-template-columns: 1fr; max-height: 95vh; }
+  .modal-image-wrap { height: 250px; }
+  .modal-info { padding: 1.25rem; }
+}
